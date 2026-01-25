@@ -15,35 +15,35 @@ import java.util.Arrays;
 
 public class RotateImage {
 
-    public void reflect(int[][] matrix) {
-        int n = matrix.length;
-        for(int i= 0; i < n; i++) {
-            for(int j = 0; j < n / 2; j++) {
-                int temp = matrix[i][j];
-                matrix[i][j] = matrix[i][n-1-j];
-                matrix[i][n-1-j] = temp;
+    public int[][] rotate(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int[][] result = new int[n][m];
+
+        //transpose
+        for(int i= 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                result[j][i] = matrix[i][j];
             }
         }
-    }
-    public void transpose(int[][] matrix) {
-        int n = matrix.length;
-        for(int i= 0; i < n; i++) {
-            for(int j = i+1; j < n; j++) {
-                int temp = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = temp;
+
+        //reverse each row
+        for(int i = 0; i < n; i++) { //rows
+            for(int j = 0; j < m / 2; j++) { //columns
+                int temp = result[i][j];
+                result[i][j] = result[i][m-1-j];
+                result[i][m - 1 - j] = temp;
             }
         }
-    }
-    public void rotate(int[][] matrix) {
-        transpose(matrix);
-        reflect(matrix);
+
+        return result;
     }
 
     public static void main(String[] args) {
         int[][] matrix = {{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}};
         RotateImage rotateImage = new RotateImage();
-        rotateImage.rotate(matrix);
-        System.out.println(Arrays.deepToString(matrix));
+        int[][] res = rotateImage.rotate(matrix);
+        System.out.println(Arrays.deepToString(res));
     }
 }

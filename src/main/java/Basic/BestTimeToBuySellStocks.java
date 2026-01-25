@@ -1,16 +1,15 @@
-package Challange500;
+package Basic;
 
 public class BestTimeToBuySellStocks {
-    public int maxProfit(int[] prices) {
-        if(prices.length < 2)
-            return 0;
-        int min = prices[0];
+    public int maxProfit(int[] arr) {
+        int minSoFar = arr[0];
         int maxProfit = 0;
-        for(int i = 1; i < prices.length; i++) {
-            maxProfit = Math.max(maxProfit, prices[i] - min);
-            min = Math.min(min, prices[i]);
+        for(int i = 1; i < arr.length; i++) {
+            minSoFar = Math.min(minSoFar, arr[i]);
+            maxProfit = Math.max(maxProfit, arr[i] - minSoFar);
         }
         return maxProfit;
+
     }
 
     public static void main(String[] args) {

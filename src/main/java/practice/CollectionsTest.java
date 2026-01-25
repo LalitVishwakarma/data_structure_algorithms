@@ -11,16 +11,16 @@ class T {
         this.b = b;
     }
 }
-public class Test {
+public class CollectionsTest {
 
     public static void main(String[] args) {
         Stack<T> stack = new Stack<>();
         stack.push(new T(2, 1));
+        stack.peek();
 
         List<Integer> linkedList = new LinkedList<>();
 
         List<Integer> arrayList = new ArrayList<>();
-
 
         Queue<Integer> queue = new LinkedList<>();
         //

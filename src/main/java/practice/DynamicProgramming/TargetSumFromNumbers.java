@@ -34,21 +34,21 @@ public class TargetSumFromNumbers {
         return false;
     }
 
-//    static boolean canSumWithTabulation(int targetSum, int[] numbers) {
-//        boolean[] table = new boolean[targetSum + 1];
-//        for (int i = 0; i < table.length; i++)
-//            table[i] = false;
-//        table[0] = true;
-//        for (int i = 0; i <= targetSum; i++) {
-//            if (table[i]) {
-//                for (int j = 0; j < numbers.length; j++) {
-//                    if (i + numbers[j] < table.length)
-//                        table[i + numbers[j]] = true;
-//                }
-//            }
-//        }
-//        return table[targetSum];
-//    }
+    static boolean canSumWithTabulation(int targetSum, int[] numbers) {
+        boolean[] table = new boolean[targetSum + 1];
+        for (int i = 0; i < table.length; i++)
+            table[i] = false;
+        table[0] = true;
+        for (int i = 0; i <= targetSum; i++) {
+            if (table[i]) {
+                for (int j = 0; j < numbers.length; j++) {
+                    if (i + numbers[j] < table.length)
+                        table[i + numbers[j]] = true;
+                }
+            }
+        }
+        return table[targetSum];
+    }
 
     static int[] howSum(int targetSum, int[] numbers) {
         if (targetSum == 0) return new int[0];
@@ -88,27 +88,27 @@ public class TargetSumFromNumbers {
         return null;
     }
 
-//    static int[] howSumWithTabulation(int targetSum, int[] numbers) {
-//        int[][] table = new int[targetSum + 1][targetSum];
-//        for (int i = 0; i <= targetSum; i++) table[i] = null;
-//        table[0] = new int[0];
-//
-//        for (int i = 0; i <= targetSum; i++) {
-//            if (table[i] != null) {
-//                for (int j = 0; j < numbers.length; j++) {
-//                    if(i + numbers[j] <= targetSum) {
-//                        int[] result = new int[table[i].length + 1];
-//                        result[0] = numbers[j];
-//                        for (int k = 0; k < table[i].length; k++)
-//                            result[k + 1] = table[i][k];
-//                        table[i + numbers[j]] = result;
-//                    }
-//                }
-//            }
-//        }
-//
-//        return table[targetSum];
-//    }
+    static int[] howSumWithTabulation(int targetSum, int[] numbers) {
+        int[][] table = new int[targetSum + 1][targetSum];
+        for (int i = 0; i <= targetSum; i++) table[i] = null;
+        table[0] = new int[0];
+
+        for (int i = 0; i <= targetSum; i++) {
+            if (table[i] != null) {
+                for (int j = 0; j < numbers.length; j++) {
+                    if(i + numbers[j] <= targetSum) {
+                        int[] result = new int[table[i].length + 1];
+                        result[0] = numbers[j];
+                        for (int k = 0; k < table[i].length; k++)
+                            result[k + 1] = table[i][k];
+                        table[i + numbers[j]] = result;
+                    }
+                }
+            }
+        }
+
+        return table[targetSum];
+    }
 
     static int[] bestSum(int targetSum, int[] numbers) {
         if (targetSum == 0) return new int[0];
